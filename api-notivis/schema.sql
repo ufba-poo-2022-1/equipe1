@@ -1,0 +1,16 @@
+CREATE DATABASE anotacoes_alunos;
+
+USE DATABASE anotacoes_alunos;
+
+-- TODO: IMPLEMENTAR TABELAS DO BANCO
+
+CREATE TABLE aluno (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT,
+  nome TEXT NOT NULL,
+  matricula VARCHAR(5) NOT NULL UNIQUE,
+);
+
+CREATE TABLE anotacoes (
+  id INTEGER AUTO_INCREMENT PRIMARY KEY,
+  id_aluno;
+)
