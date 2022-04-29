@@ -1,4 +1,4 @@
-package com.npteam.controller;
+package com.npteam.apinotivis.controller;
 
 public class AnotacoesController {
     

@@ -1,9 +1,9 @@
-package com.npteam.dao;
+package com.npteam.apinotivis.dao;
 
-import com.npteam.model.Anotacoes;
+import com.npteam.apinotivis.model.Anotacoes;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface AnotacoesDAO extends CrudRepository<Integer, Anotacoes> {
+public interface AnotacoesDAO extends CrudRepository<Anotacoes, Integer> {
     
 }

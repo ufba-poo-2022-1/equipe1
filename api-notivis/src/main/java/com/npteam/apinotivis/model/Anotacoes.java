@@ -1,4 +1,4 @@
-package com.npteam.model;
+package com.npteam.apinotivis.model;
 
 public class Anotacoes {
     

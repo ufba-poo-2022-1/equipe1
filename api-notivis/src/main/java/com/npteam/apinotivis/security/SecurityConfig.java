@@ -1,4 +1,4 @@
-package com.npteam.security;
+package com.npteam.apinotivis.security;
 
 public class SecurityConfig {
     

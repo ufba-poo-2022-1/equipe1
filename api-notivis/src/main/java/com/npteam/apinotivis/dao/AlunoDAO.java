@@ -1,6 +1,6 @@
-package com.npteam.dao;
+package com.npteam.apinotivis.dao;
 
-import com.npteam.model.Aluno;
+import com.npteam.apinotivis.model.Aluno;
 
 import org.springframework.data.repository.CrudRepository;
 
