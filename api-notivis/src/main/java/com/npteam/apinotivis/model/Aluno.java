@@ -8,6 +8,7 @@ import java.util.List;
 
 @Entity
 @Data
+@Table(name = "alunos")
 public class Aluno {
 
     @Id
@@ -17,7 +18,7 @@ public class Aluno {
 
 
     @JsonIgnoreProperties("aluno")
-    private List<Anotacoes> listaAnotacoes;
+    private List<Pergunta> listaAnotacoes;
 
 
 }

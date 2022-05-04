@@ -4,6 +4,6 @@
 //
 //import org.springframework.data.jpa.repository.JpaRepository;
 //
-//public interface AnotacoesDAO extends JpaRepository<Anotacoes, Integer> {
+//public interface PerguntaDAO extends JpaRepository<Anotacoes, Integer> {
 //
 //}
