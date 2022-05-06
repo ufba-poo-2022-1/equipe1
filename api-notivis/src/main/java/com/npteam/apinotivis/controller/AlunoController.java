@@ -1,12 +1,14 @@
 package com.npteam.apinotivis.controller;
 
+import com.npteam.apinotivis.dao.AlunoDAO;
 import com.npteam.apinotivis.model.Aluno;
 import com.npteam.apinotivis.services.IAlunoServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 import java.util.List;
 
@@ -17,14 +19,37 @@ public class AlunoController {
   @Autowired
   private IAlunoServices alunoServices;
 
+  @Autowired
+  private AlunoDAO alunoDAO;
+
   @GetMapping("/teste")
   public String helloWorld() {
     return "Hello World!";
   }
 
-  @GetMapping("/alunos/listarTodos")
+  @GetMapping("/alunos/listar")
   public ResponseEntity<List<Aluno>> listarTodos() {
-    return ResponseEntity.ok(alunoServices.listarAlunos());
+    ResponseEntity<List<Aluno>> response = ResponseEntity.ok(alunoServices.listarAlunos());
+    if (response != null) {
+      return response;
+    }
+    return ResponseEntity.notFound().build();
   }
-    
+
+  @GetMapping("/alunos/buscar/{id}")
+  public ResponseEntity<?> buscarAlunoPorId(@PathVariable Integer id) {
+    Optional<Aluno> aluno = alunoDAO.findById(id);
+    if (!aluno.isEmpty()) {
+      return ResponseEntity.ok(aluno);
+    }
+    return ResponseEntity.notFound().build();
+  }
+
+  @PostMapping("/alunos/cadastrar")
+  public ResponseEntity<?> cadastrarAluno(@RequestBody Aluno aluno) {
+    alunoDAO.saveAndFlush(aluno);
+
+    return ResponseEntity.status(201).build();
+  }
+
 }
