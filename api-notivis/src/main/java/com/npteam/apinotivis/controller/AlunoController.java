@@ -17,7 +17,7 @@ import java.util.List;
 public class AlunoController {
 
   @Autowired
-  private IAlunoServices alunoServices;
+  private AlunoServiceImpl alunoServices;
 
   @Autowired
   private AlunoDAO alunoDAO;
