@@ -1,14 +1,10 @@
 package com.npteam.apinotivis.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Data
@@ -19,8 +15,10 @@ public class Aluno {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "numero_matricula")
     private Integer numero_matricula;
     private String nome;
+    private String senha;
 
 //    @JoinColumn(name = "perguntas")
 //    @ElementCollection

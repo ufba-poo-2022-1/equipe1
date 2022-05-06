@@ -17,14 +17,14 @@ CREATE TABLE `alunos` (
 DROP TABLE IF EXISTS `Notivis`.`anotacao` ;
 
 CREATE TABLE `perguntas` (
-                            `id` SERIAL NOT NULL,
-                            `conteudo` TEXT NOT NULL ,
-                            `numero_matricula_aluno` int DEFAULT NULL,
-                            `status_respondida` boolean default NULL,
-                            PRIMARY KEY (`id`),
-                            FOREIGN KEY (`numero_matricula_aluno`) REFERENCES aluno(`numero_matricula`),
-                            UNIQUE KEY `id_UNIQUE` (`id`)
+                             `id` SERIAL PRIMARY KEY,
+                             `conteudo` TEXT NOT NULL ,
+                             `numero_matricula_aluno` BIGINT UNSIGNED NOT NULL,
+                             `status_respondida` boolean default FALSE,
+                             CONSTRAINT fk_matricula_aluno FOREIGN KEY(numero_matricula_aluno)
+                                 REFERENCES alunos(numero_matricula)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 DROP TABLE IF EXISTS `Notivis`.`materia` ;
 
@@ -37,7 +37,7 @@ CREATE TABLE `materia` (
                            `numero_matricula_aluno` int DEFAULT NULL,
                            PRIMARY KEY (`codigo`),
                            FOREIGN KEY (`id_professor`) REFERENCES professor(`id`),
-                           FOREIGN KEY (`numero_matricula_aluno`) REFERENCES aluno(`numero_matricula`),
+                           FOREIGN KEY (`numero_matricula_aluno`) REFERENCES alunos(`numero_matricula`),
                            UNIQUE KEY `codigo_UNIQUE` (`codigo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
