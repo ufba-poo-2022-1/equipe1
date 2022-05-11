@@ -16,10 +16,19 @@ public class Pergunta {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
+  private Integer id_pergunta;
 
+  @Column(nullable = false)
   private String conteudo;
+
+  @Column(nullable = false)
   private Integer numero_matricula_aluno;
+
+  @Column(nullable = false)
   private Boolean status_respondida = Boolean.FALSE;
+
+  @ManyToOne
+  @JoinColumn(name = "id_aula")
+  private Aula aula;
 
 }
