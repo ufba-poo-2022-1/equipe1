@@ -4,12 +4,10 @@ package com.npteam.apinotivis.controller;
 import com.npteam.apinotivis.dao.PerguntaDAO;
 import com.npteam.apinotivis.model.Aluno;
 import com.npteam.apinotivis.model.Pergunta;
+import com.npteam.apinotivis.services.PerguntaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,6 +16,9 @@ public class PerguntaController {
 
   @Autowired
   private PerguntaDAO perguntaDAO;
+
+  @Autowired
+  private PerguntaService perguntaService;
 
   @GetMapping("/perguntas/listar/todas")
   public ResponseEntity<List<Pergunta>> listarTodasPerguntas() {
@@ -31,8 +32,8 @@ public class PerguntaController {
   }
 
     @PostMapping("/perguntas/criar")
-    public ResponseEntity<?> criarNovaPergunta(@RequestBody Pergunta pergunta) {
-      perguntaDAO.saveAndFlush(pergunta);
+    public ResponseEntity<?> criarNovaPergunta(@RequestParam(value = "aula") Integer id_aula, @RequestBody Pergunta pergunta) {
+      perguntaService.cadastrarPergunta(id_aula, pergunta);
 
       return  ResponseEntity.status(201).build();
     }
