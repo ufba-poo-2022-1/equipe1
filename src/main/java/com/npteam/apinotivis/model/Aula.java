@@ -22,7 +22,10 @@ public class Aula {
     @Column(nullable = true)
     private Boolean status_abertura = true;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "aula")
     private List<Pergunta> perguntas = new ArrayList<>();
+
+    public void addPergunta(Pergunta pergunta) {
+        this.perguntas.add(pergunta);
+    }
 }

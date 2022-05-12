@@ -31,8 +31,8 @@ public class PerguntaController {
     //return ResponseEntity.ok(perguntaDAO.findAll());
   }
 
-    @PostMapping("/perguntas/criar")
-    public ResponseEntity<?> criarNovaPergunta(@RequestParam(value = "aula") Integer id_aula, @RequestBody Pergunta pergunta) {
+    @PostMapping("/perguntas/criar/aula/{id_aula}")
+    public ResponseEntity<?> criarNovaPergunta(@PathVariable Integer id_aula, @RequestBody Pergunta pergunta) {
       perguntaService.cadastrarPergunta(id_aula, pergunta);
 
       return  ResponseEntity.status(201).build();

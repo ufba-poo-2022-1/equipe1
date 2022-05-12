@@ -1,6 +1,7 @@
 package com.npteam.apinotivis.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,7 +28,8 @@ public class Pergunta {
   @Column(nullable = false)
   private Boolean status_respondida = Boolean.FALSE;
 
-  @ManyToOne
+  @JsonIgnore
+  @ManyToOne()
   @JoinColumn(name = "id_aula")
   private Aula aula;
 
