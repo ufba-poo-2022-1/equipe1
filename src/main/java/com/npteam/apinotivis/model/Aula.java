@@ -25,6 +25,10 @@ public class Aula {
     @OneToMany(mappedBy = "aula")
     private List<Pergunta> perguntas = new ArrayList<>();
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "codigo", referencedColumnName = "codigo")
+    private Materia materia;
+
     public void addPergunta(Pergunta pergunta) {
         this.perguntas.add(pergunta);
     }

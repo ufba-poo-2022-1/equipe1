@@ -2,6 +2,7 @@ package com.npteam.apinotivis.services;
 
 import com.npteam.apinotivis.dao.AulaDAO;
 import com.npteam.apinotivis.model.Aula;
+import com.npteam.apinotivis.model.Materia;
 import com.npteam.apinotivis.model.Pergunta;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +16,18 @@ public class AulaService {
     @Autowired
     private AulaDAO aulaDAO;
 
+    @Autowired
+    private MateriaService materiaService;
+
     public List<Aula> listarAulas() {
         return aulaDAO.findAll();
     }
 
-    public Aula cadastrarAula(Aula aula) {
+    public Aula cadastrarAula(Aula aula, Integer codigo) {
+        Materia materia = materiaService.listarMateria(codigo);
+
+        aula.setMateria(materia);
+        materia.addAula(aula);
 
         return aulaDAO.save(aula);
     }

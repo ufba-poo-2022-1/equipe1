@@ -18,9 +18,9 @@ public class AulaController {
         return aulaService.listarAulas();
     }
 
-    @PostMapping("/aulas/cadastrar")
-    public ResponseEntity<Aula> cadastrarAula(@RequestBody Aula aula) {
-        aulaService.cadastrarAula(aula);
+    @PostMapping("/aulas/cadastrar/materia/{codigo}")
+    public ResponseEntity<Aula> cadastrarAula(@RequestBody Aula aula, @PathVariable(name = "codigo") Integer codigo) {
+        aulaService.cadastrarAula(aula, codigo);
 
         return ResponseEntity.status(201).build();
     }
