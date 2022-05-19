@@ -13,6 +13,8 @@ public class Materia {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer codigo;
+
+  @Column(nullable = true)
   private String descricao;
 
   @JoinColumn(name = "id_professor")

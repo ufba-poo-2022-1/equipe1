@@ -17,7 +17,11 @@ public class Aluno {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "numero_matricula")
     private Integer numero_matricula;
+
+    @Column(nullable = false, length = 150)
     private String nome;
+    
+    @Column(nullable = false, length = 12)
     private String senha;
 
 //    @JoinColumn(name = "perguntas")
