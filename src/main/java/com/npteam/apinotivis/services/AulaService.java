@@ -3,7 +3,6 @@ package com.npteam.apinotivis.services;
 import com.npteam.apinotivis.dao.AulaDAO;
 import com.npteam.apinotivis.model.Aula;
 import com.npteam.apinotivis.model.Materia;
-import com.npteam.apinotivis.model.Pergunta;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -18,4 +18,5 @@ public class MateriaService {
 
         return materia.orElseThrow(()-> new ObjectNotFoundException(codigo, "Matéria"));
     }
+
 }

@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -24,10 +26,11 @@ public class Aluno {
     @Column(nullable = false, length = 12)
     private String senha;
 
-//    @JoinColumn(name = "perguntas")
-//    @ElementCollection
-//    @OneToMany
-//    private List<Pergunta> listaAnotacoes;
+    @ManyToMany(mappedBy = "alunos_matriculados")
+    private List<Materia> materias = new ArrayList<>();
 
+    public void addMateria(Materia materia) {
+        this.materias.add(materia);
+    }
 
 }

@@ -2,7 +2,6 @@ package com.npteam.apinotivis.controller;
 
 
 import com.npteam.apinotivis.dao.PerguntaDAO;
-import com.npteam.apinotivis.model.Aluno;
 import com.npteam.apinotivis.model.Pergunta;
 import com.npteam.apinotivis.services.PerguntaService;
 import org.springframework.beans.factory.annotation.Autowired;

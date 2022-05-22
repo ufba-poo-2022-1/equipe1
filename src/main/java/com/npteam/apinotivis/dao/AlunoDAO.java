@@ -1,6 +1,4 @@
 package com.npteam.apinotivis.dao;
-
-import com.npteam.apinotivis.dto.AlunoDTO;
 import com.npteam.apinotivis.model.Aluno;
 
 import org.springframework.data.jpa.repository.JpaRepository;
