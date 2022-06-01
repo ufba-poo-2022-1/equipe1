@@ -26,12 +26,8 @@ public class AlunoController {
   }
 
   @GetMapping("/alunos/listar")
-  public ResponseEntity<List<Aluno>> listarTodos() {
-    ResponseEntity<List<Aluno>> response = ResponseEntity.ok(alunoServices.listarAlunos());
-    if (response != null) {
-      return response;
-    }
-    return ResponseEntity.notFound().build();
+  public List<Aluno> listarTodos() {
+    return alunoServices.listarAlunos();
   }
 
   @GetMapping("/alunos/buscar/{id}")

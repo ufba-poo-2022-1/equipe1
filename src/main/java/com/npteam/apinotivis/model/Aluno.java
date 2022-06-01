@@ -26,7 +26,11 @@ public class Aluno {
     @Column(nullable = false, length = 12)
     private String senha;
 
-    @ManyToMany(mappedBy = "alunos_matriculados")
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "materias_aluno",
+            joinColumns = @JoinColumn(name = "numero_matricula"),
+            inverseJoinColumns = @JoinColumn(name = "codigo"))
     private List<Materia> materias = new ArrayList<>();
 
     public void addMateria(Materia materia) {

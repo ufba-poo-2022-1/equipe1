@@ -21,7 +21,7 @@ public class AlunoServiceImpl implements IAlunoServices {
 
   @Override
   public List<Aluno> listarAlunos() {
-    return alunoDAO.listarAlunos();
+    return alunoDAO.findAll();
   }
 
   public Aluno listarAluno(Integer matricula) {

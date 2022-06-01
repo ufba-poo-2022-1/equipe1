@@ -27,8 +27,7 @@ public class Materia {
   @OneToMany(mappedBy = "id_aula")
   private List<Aula> aulas = new ArrayList<>();
 
-  @ManyToMany
-  @JoinTable(name = "alunos_matriculados", joinColumns = @JoinColumn(name = "codigo"), inverseJoinColumns = @JoinColumn(name = "matricula"))
+  @ManyToMany(mappedBy = "materias")
   private List<Aluno> alunos_matriculados = new ArrayList<>();
 
   public void addAula(Aula aula) {
