@@ -20,8 +20,10 @@ public class Materia {
   @Column(nullable = true)
   private String descricao;
 
-  @JoinColumn(name = "id_professor")
-  private Integer id_professor;
+  @ManyToOne(cascade = CascadeType.ALL)
+  @JsonIgnore
+  @JoinColumn(name = "id", referencedColumnName = "id")
+  private Professor professor;
 
   @JsonIgnore
   @OneToMany(mappedBy = "id_aula")
@@ -32,8 +34,5 @@ public class Materia {
 
   public void addAula(Aula aula) {
     this.aulas.add(aula);
-  }
-  public void addAluno(Aluno aluno) {
-    this.alunos_matriculados.add(aluno);
   }
 }
