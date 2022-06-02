@@ -11,39 +11,29 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-// @CrossOrigin("*")
 public class AlunoController {
 
-  @Autowired
-  private AlunoServiceImpl alunoServices;
+    @Autowired
+    private AlunoServiceImpl alunoServices;
 
-  @Autowired
-  private AlunoDAO alunoDAO;
+    @Autowired
+    private AlunoDAO alunoDAO;
 
-  @GetMapping("/teste")
-  public String helloWorld() {
-    return "Hello World!";
-  }
-
-  @GetMapping("/alunos/listar")
-  public List<Aluno> listarTodos() {
-    return alunoServices.listarAlunos();
-  }
-
-  @GetMapping("/alunos/buscar/{id}")
-  public ResponseEntity<?> buscarAlunoPorId(@PathVariable Integer id) {
-    Optional<Aluno> aluno = alunoDAO.findById(id);
-    if (!aluno.isEmpty()) {
-      return ResponseEntity.ok(aluno);
+    @GetMapping("/alunos/listar")
+    public List<Aluno> listarTodos() {
+        return alunoServices.listarAlunos();
     }
-    return ResponseEntity.notFound().build();
-  }
 
-  @PostMapping("/alunos/cadastrar/materia/{codigo}")
-  public ResponseEntity<?> cadastrarAluno(@RequestBody Aluno aluno, @PathVariable(name = "codigo") Integer codigo) {
-    alunoServices.cadastrarAluno(aluno, codigo);
+    @GetMapping("/alunos/buscar/{id}")
+    public ResponseEntity<?> buscarAlunoPorId(@PathVariable Integer id) {
+      return ResponseEntity.ok().body(alunoDAO.findById(id));
+    }
 
-    return ResponseEntity.status(201).build();
-  }
+    @PostMapping("/alunos/cadastrar/materia/{codigo}")
+    public ResponseEntity<?> cadastrarAluno(@RequestBody Aluno aluno, @PathVariable(name = "codigo") Integer codigo) {
+        alunoServices.cadastrarAluno(aluno, codigo);
+
+        return ResponseEntity.status(201).build();
+    }
 
 }
