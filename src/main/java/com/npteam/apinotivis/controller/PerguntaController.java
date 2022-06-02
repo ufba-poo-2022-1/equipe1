@@ -21,13 +21,7 @@ public class PerguntaController {
 
   @GetMapping("/perguntas/listar/todas")
   public ResponseEntity<List<Pergunta>> listarTodasPerguntas() {
-    ResponseEntity<List<Pergunta>> response = ResponseEntity.ok(perguntaDAO.findAll());
-    if (response != null) {
-      return response;
-    }
-    return ResponseEntity.notFound().build();
-
-    //return ResponseEntity.ok(perguntaDAO.findAll());
+    return ResponseEntity.ok(perguntaDAO.findAll());
   }
 
     @PostMapping("/perguntas/criar/aula/{id_aula}")
