@@ -24,7 +24,7 @@ public class ProfessorController {
     }
 
     @PostMapping("/professores/cadastrar/materia/{codigo}")
-    public ResponseEntity<Professor> cadastrarProfessor(@RequestBody Professor professor, @PathVariable Integer codigo){
+    public ResponseEntity<Void> cadastrarProfessor(@RequestBody Professor professor, @PathVariable Integer codigo){
         professorService.cadastrarProfessor(professor, codigo);
 
         return ResponseEntity.status(201).build();
