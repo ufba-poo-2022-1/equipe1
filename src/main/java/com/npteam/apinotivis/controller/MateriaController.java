@@ -24,7 +24,7 @@ public class MateriaController {
     }
 
     @PostMapping("/materias/cadastrar")
-    public ResponseEntity<Materia> cadastrarMateria(@RequestBody Materia materia) {
+    public ResponseEntity<Void> cadastrarMateria(@RequestBody Materia materia) {
         materiaService.cadastrarMateria(materia);
 
         return ResponseEntity.status(201).build();
