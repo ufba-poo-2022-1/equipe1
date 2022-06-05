@@ -13,24 +13,23 @@ import java.util.List;
 @RestController
 public class PerguntaController {
 
-  @Autowired
-  private PerguntaDAO perguntaDAO;
+    @Autowired
+    private PerguntaDAO perguntaDAO;
 
-  @Autowired
-  private PerguntaService perguntaService;
+    @Autowired
+    private PerguntaService perguntaService;
 
-  @GetMapping("/perguntas/listar/todas")
-  public ResponseEntity<List<Pergunta>> listarTodasPerguntas() {
-    return ResponseEntity.ok(perguntaDAO.findAll());
-  }
-
-    @PostMapping("/perguntas/criar/aula/{id_aula}")
-    public ResponseEntity<?> criarNovaPergunta(@PathVariable Integer id_aula, @RequestBody Pergunta pergunta) {
-      perguntaService.cadastrarPergunta(id_aula, pergunta);
-
-      return  ResponseEntity.status(201).build();
+    @GetMapping("/perguntas/listar/todas")
+    public ResponseEntity<List<Pergunta>> listarTodasPerguntas() {
+        return ResponseEntity.ok(perguntaDAO.findAll());
     }
 
+    @PostMapping("/perguntas/criar/aula/{id_aula}")
+    public ResponseEntity<Void> criarNovaPergunta(@PathVariable Integer id_aula, @RequestBody Pergunta pergunta) {
+        perguntaService.cadastrarPergunta(id_aula, pergunta);
+
+        return ResponseEntity.status(201).build();
+    }
 
 
 }
