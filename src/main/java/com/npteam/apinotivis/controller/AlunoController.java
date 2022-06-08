@@ -25,12 +25,12 @@ public class AlunoController {
     }
 
     @GetMapping("/alunos/buscar/{id}")
-    public ResponseEntity<Optional<Aluno>> buscarAlunoPorId(@PathVariable Integer id) {
-      return ResponseEntity.ok().body(alunoDAO.findById(id));
+    public ResponseEntity<Aluno> buscarAlunoPorId(@PathVariable Integer id) {
+      return ResponseEntity.ok().body(alunoServices.buscarAlunoPorId(id));
     }
 
     @PostMapping("/alunos/cadastrar/materia/{codigo}")
-    public ResponseEntity<?> cadastrarAluno(@RequestBody Aluno aluno, @PathVariable(name = "codigo") Integer codigo) {
+    public ResponseEntity<Void> cadastrarAluno(@RequestBody Aluno aluno, @PathVariable(name = "codigo") Integer codigo) {
         alunoServices.cadastrarAluno(aluno, codigo);
 
         return ResponseEntity.status(201).build();

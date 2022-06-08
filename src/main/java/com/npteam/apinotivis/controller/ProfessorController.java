@@ -5,6 +5,7 @@ import com.npteam.apinotivis.services.ProfessorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import javax.validation.Valid;
 
 import java.util.List;
 
@@ -19,12 +20,12 @@ public class ProfessorController {
     }
 
     @GetMapping("/profesores/{id_professor}")
-    public ResponseEntity<Professor> listarProfessor(@PathVariable Integer id_professor){
+    public ResponseEntity<Professor> listarProfessor(@PathVariable @Valid Integer id_professor){
         return ResponseEntity.ok().body(professorService.listarProfessor(id_professor));
     }
 
     @PostMapping("/professores/cadastrar/materia/{codigo}")
-    public ResponseEntity<Professor> cadastrarProfessor(@RequestBody Professor professor, @PathVariable Integer codigo){
+    public ResponseEntity<Void> cadastrarProfessor(@RequestBody Professor professor, @PathVariable Integer codigo){
         professorService.cadastrarProfessor(professor, codigo);
 
         return ResponseEntity.status(201).build();
